@@ -1,0 +1,22 @@
+{
+	"prettier.arrowParens": "always",
+	"prettier.bracketSpacing": true,
+	"prettier.embeddedLanguageFormatting": "auto",
+	"prettier.enable": true,
+	"prettier.enableDebugLogs": false,
+	"prettier.endOfLine": "lf",
+	"prettier.htmlWhitespaceSensitivity": "css",
+	"prettier.ignorePath": ".prettierignore",
+	"prettier.insertPragma": false,
+	"prettier.jsxBracketSameLine": false,
+	"prettier.jsxSingleQuote": true,
+	"prettier.printWidth": 80,
+	"prettier.proseWrap": "preserve",
+	"prettier.quoteProps": "as-needed",
+	"prettier.semi": false,
+	"prettier.singleQuote": true,
+	"prettier.tabWidth": 3,
+	"prettier.trailingComma": "none",
+	"prettier.useEditorConfig": true,
+	"prettier.useTabs": true
+}
