@@ -9,3 +9,4 @@ const userDataSchema = joi.object<UserData>({
 })
 
 export default userDataSchema
+   

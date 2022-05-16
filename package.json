@@ -8,7 +8,7 @@
       "build": "tsc",
       "start": "node build/index.js",
       "dev": "nodemon src/server.ts",
-      "dev:dev": "npx dotenv -e .env.development nodemon src/server.ts",
+      "dev:dev": "npx dotenv -e .env.development prisma migrate dev && nodemon src/server.ts",
       "dev:test": "npx dotenv -e .env.test nodemon src/server.ts",
       "dev:migrate": "npx prisma migrate dev && nodemon src/server.ts",
       "migrate:test": "npx dotenv -e .env.test prisma migrate dev && nodemon src/server.ts",
@@ -27,7 +27,8 @@
       "dotenv-cli": "^5.1.0",
       "express": "^4.18.1",
       "express-async-errors": "^3.1.1",
-      "joi": "^17.6.0"
+      "joi": "^17.6.0",
+      "jsonwebtoken": "^8.5.1"
    },
    "devDependencies": {
       "@faker-js/faker": "^6.3.1",
@@ -37,6 +38,7 @@
       "@types/express": "^4.17.13",
       "@types/jest": "^27.5.1",
       "@types/joi": "^17.2.3",
+      "@types/jsonwebtoken": "^8.5.8",
       "@types/node": "^17.0.32",
       "@types/spotify-web-api-node": "^5.0.7",
       "@types/supertest": "^2.0.12",
