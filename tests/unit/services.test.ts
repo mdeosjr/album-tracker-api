@@ -1,7 +1,9 @@
 import { jest } from '@jest/globals'
-import { createUserBody } from '../factories/userFactory.js'
+import { createLoginBody, createUserBody } from '../factories/userFactory.js'
 import { userRepository } from '../../src/repositories/userRepository.js'
 import { userServices } from '../../src/services/userServices.js'
+import { authServices } from '../../src/services/authServices.js'
+import bcrypt from 'bcrypt'
 
 describe('User services unit tests', () => {
    beforeEach(() => {
@@ -23,5 +25,24 @@ describe('User services unit tests', () => {
          type: 'conflict'
       })
       expect(create).not.toBeCalled()
+   })
+})
+
+describe('Auth services unit tests', () => {
+   beforeEach(() => {
+      jest.clearAllMocks()
+      jest.resetAllMocks()
+   })
+
+   it('should not log in given invalid credentials', async () => {
+      const body = createLoginBody()
+      jest.spyOn(bcrypt, 'compareSync').mockReturnValue(false)
+
+      const login = async () => await authServices.login(body)
+
+      expect(login()).rejects.toEqual({
+         message: 'User or password incorrect!',
+         type: 'unauthorized'
+      })
    })
 })

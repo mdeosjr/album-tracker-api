@@ -11,7 +11,14 @@ async function findByEmail(email: string) {
    })
 }
 
+export async function findById(userId: number) {
+   return await prisma.user.findFirst({
+      where: { id: userId }
+   })
+}
+
 export const userRepository = {
    create,
-   findByEmail
+   findByEmail,
+   findById
 }

@@ -2,6 +2,7 @@ import { faker } from '@faker-js/faker'
 import { UserData } from '../../src/schemas/userDataSchema.js'
 import { prisma } from '../../src/db.js'
 import bcrypt from 'bcrypt'
+import { LoginData } from '../../src/schemas/loginSchema.js'
 
 export function createUserBody(): UserData {
    return {
@@ -18,4 +19,11 @@ export async function createUserDatabase(user: UserData) {
          password: bcrypt.hashSync(user.password, 8)
       }
    })
+}
+
+export function createLoginBody(): LoginData {
+   return {
+      email: faker.internet.email(),
+      password: faker.internet.password()
+   }
 }
