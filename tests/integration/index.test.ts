@@ -31,7 +31,9 @@ describe('POST /users/login', () => {
       const body = createUserBody()
       await createUserDatabase(body)
 
-      const res = await agent.post('/users/login').send(body)
+      const res = await agent
+         .post('/users/login')
+         .send({ email: body.email, password: body.password })
 
       expect(res.status).toEqual(200)
       expect(typeof res.text).toEqual('string')
