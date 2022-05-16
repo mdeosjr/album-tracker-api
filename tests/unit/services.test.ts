@@ -36,6 +36,10 @@ describe('Auth services unit tests', () => {
 
    it('should not log in given invalid credentials', async () => {
       const body = createLoginBody()
+      const user = createUserBody()
+      jest
+         .spyOn(userRepository, 'findByEmail')
+         .mockResolvedValue({ id: 1, ...user })
       jest.spyOn(bcrypt, 'compareSync').mockReturnValue(false)
 
       const login = async () => await authServices.login(body)
