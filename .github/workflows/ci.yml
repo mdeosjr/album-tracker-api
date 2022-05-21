@@ -15,8 +15,6 @@ jobs:
               envkey_DATABASE_URL: 'postgres://postgres:123456@db:5432/album_tracker_test'
               envkey_JWT_SECRET: 'e67b0ea559058f9989a6'
               file_name: .env.test
-         - name: Update database
-           run: docker-compose -f docker-compose-test.yml up --build
          - name: Run tests
            run: docker-compose -f docker-compose-test.yml run node_app npm run test
          - name: Build
