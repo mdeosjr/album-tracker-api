@@ -10,7 +10,7 @@
       "dev": "nodemon src/server.ts",
       "dev:dev": "npx dotenv -e .env.development prisma migrate dev && nodemon src/server.ts",
       "dev:test": "npx dotenv -e .env.test nodemon src/server.ts",
-      "dev:migrate": "npx prisma migrate dev && nodemon src/server.ts",
+      "dev:migrate": "npx prisma db push --force-reset && nodemon src/server.ts",
       "migrate:test": "npx dotenv -e .env.test prisma migrate dev && nodemon src/server.ts",
       "test": "npx dotenv -e .env.test prisma migrate dev && NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -i",
       "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest ---coverage"
