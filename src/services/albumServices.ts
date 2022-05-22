@@ -3,13 +3,14 @@ import { albumRepository } from '../repositories/albumRepository.js'
 import { trackRepository } from '../repositories/trackRepository.js'
 
 async function saveAlbum(albumData: any, userId: number) {
-   const { spotifyAlbumId, name, artist, url, list, tracks } = albumData
+   const { spotifyAlbumId, name, artist, url, cover, list, tracks } = albumData
 
    const data: Album = {
       spotifyAlbumId,
       name,
       artist,
       url,
+      cover,
       list
    }
 

@@ -23,6 +23,7 @@ model Album {
   artist         String
   list           List
   url            String
+  cover          String
   albums         AlbumToUser[]
   tracks         Track[]
 
