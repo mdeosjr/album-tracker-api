@@ -1,7 +1,7 @@
 import { Album, AlbumToUser } from '@prisma/client'
 import { prisma } from '../db.js'
 
-async function create(albumData: Album) {
+async function createAlbum(albumData: Album) {
    await prisma.album.create({
       data: albumData
    })
@@ -28,8 +28,17 @@ async function getUserAlbums(userId: number) {
    })
 }
 
+async function findAlbumOfUser(userId: number, albumId: string) {
+   return await prisma.albumToUser.findFirst({
+      where: {
+         AND: [{ userId, albumId }]
+      }
+   })
+}
+
 export const albumRepository = {
-   create,
+   createAlbum,
    createUserAlbum,
-   getUserAlbums
+   getUserAlbums,
+   findAlbumOfUser
 }
