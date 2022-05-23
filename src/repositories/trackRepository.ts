@@ -5,6 +5,15 @@ async function saveTracks(tracks: Track[]) {
     await prisma.track.createMany({ data: tracks })
 }
 
+async function deleteTracks(albumId: string) {
+    await prisma.track.deleteMany({
+        where: {
+            albumId
+        }
+    })
+}
+
 export const trackRepository = {
-    saveTracks
+    saveTracks,
+    deleteTracks
 }

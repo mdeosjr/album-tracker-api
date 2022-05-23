@@ -31,7 +31,16 @@ async function getAlbums(userId: number) {
    return await albumRepository.getUserAlbums(userId)
 }
 
+async function deleteUserAlbum(userId: number, albumId: string) {
+   const userAlbum = await albumRepository.findAlbumOfUser(userId, albumId)
+
+   await trackRepository.deleteTracks(albumId)
+   await albumRepository.deleteUserAlbum(userAlbum.id)
+   await albumRepository.deleteAlbum(albumId)
+}
+
 export const albumServices = {
    saveAlbum,
-   getAlbums
+   getAlbums,
+   deleteUserAlbum
 }
