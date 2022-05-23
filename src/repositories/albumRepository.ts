@@ -36,9 +36,25 @@ async function findAlbumOfUser(userId: number, albumId: string) {
    })
 }
 
+async function deleteUserAlbum(id: number) {
+   await prisma.albumToUser.delete({
+      where: { id }
+   })
+}
+
+async function deleteAlbum(albumId: string) {
+   await prisma.album.delete({
+      where: {
+         spotifyAlbumId: albumId
+      }
+   })
+}
+
 export const albumRepository = {
    createAlbum,
    createUserAlbum,
    getUserAlbums,
-   findAlbumOfUser
+   findAlbumOfUser,
+   deleteUserAlbum,
+   deleteAlbum
 }
