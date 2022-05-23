@@ -14,12 +14,15 @@ async function saveAlbum(albumData: any, userId: number) {
       list
    }
 
+   const album = await albumRepository.findAlbumOfUser(userId, spotifyAlbumId)
+   if (album) throw { type: 'conflict', message: 'Album already on your lists!' }
+
    const userAlbum: Omit<AlbumToUser, "id"> = {
       albumId: spotifyAlbumId,
       userId
    }
 
-   await albumRepository.create(data)
+   await albumRepository.createAlbum(data)
    await albumRepository.createUserAlbum(userAlbum)
    await trackRepository.saveTracks(tracks)
 }
