@@ -8,7 +8,7 @@ export function createUserBody(): UserData {
    return {
       name: faker.lorem.words(2),
       email: faker.internet.email(),
-      password: faker.internet.password()
+      password: faker.internet.password(),
    }
 }
 
@@ -21,7 +21,7 @@ export async function createUserDatabase(user: UserData) {
    })
 }
 
-export function createLoginBody(): LoginData {
+export function createLoginBody(): Omit<LoginData, 'provider'> {
    return {
       email: faker.internet.email(),
       password: faker.internet.password()

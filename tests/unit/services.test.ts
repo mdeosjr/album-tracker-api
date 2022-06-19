@@ -15,7 +15,7 @@ describe('User services unit tests', () => {
       const user = createUserBody()
       jest
          .spyOn(userRepository, 'findByEmail')
-         .mockResolvedValue({ id: 1, ...user })
+         .mockResolvedValue({ id: 1, provider: null, ...user })
 
       const newUser = async () => await userServices.create(user)
 
@@ -39,7 +39,7 @@ describe('Auth services unit tests', () => {
       const user = createUserBody()
       jest
          .spyOn(userRepository, 'findByEmail')
-         .mockResolvedValue({ id: 1, ...user })
+         .mockResolvedValue({ id: 1, provider: null, ...user })
       jest.spyOn(bcrypt, 'compareSync').mockReturnValue(false)
 
       const login = async () => await authServices.login(body)
