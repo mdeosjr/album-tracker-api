@@ -1,7 +1,7 @@
 import { User } from '@prisma/client'
 import joi from 'joi'
 
-export type UserData = Omit<User, 'id'>
+export type UserData = Omit<User, 'id' | 'provider'>
 const userDataSchema = joi.object<UserData>({
    name: joi.string().required(),
    email: joi.string().required(),

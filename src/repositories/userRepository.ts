@@ -1,8 +1,9 @@
 import { prisma } from '../db.js'
 import { UserData } from '../schemas/userDataSchema.js'
+import { spotifyUser } from '../services/authServices.js'
 
-async function create(createUser: UserData) {
-   await prisma.user.create({ data: createUser })
+async function create(createUser: UserData | spotifyUser) {
+   return await prisma.user.create({ data: createUser })
 }
 
 async function findByEmail(email: string) {

@@ -8,5 +8,6 @@ const authRouter = Router()
 
 authRouter.post('/users/login', validateSchema(loginSchema), authController.login)
 authRouter.post('/validate-token', validateToken, (req, res) => res.sendStatus(200))
+authRouter.post('/users/oauth', authController.spotifyLogin)
 
 export default authRouter
